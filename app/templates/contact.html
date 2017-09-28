@@ -1,0 +1,205 @@
+<!-- FlatFy Theme - Andrea Galanti /-->
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+<head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="Flatfy Free Flat and Responsive HTML5 Template ">
+    <meta name="author" content="">
+
+    <title>SupremeBot</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Google Web Font -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom CSS-->
+    <link href="css/general.css" rel="stylesheet">
+
+    <!-- Owl-Carousel -->
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/owl.theme.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+
+    <!-- Magnific Popup core CSS file -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <script src="js/modernizr-2.8.3.min.js"></script>  <!-- Modernizr /-->
+    <!--[if IE 9]>
+		<script src="js/PIE_IE9.js"></script>
+	<![endif]-->
+    <!--[if lt IE 9]>
+		<script src="js/PIE_IE678.js"></script>
+	<![endif]-->
+
+    <!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+	<![endif]-->
+
+</head>
+<style>
+    .credit-card-div  span {
+        padding-top:10px;
+    }
+    .credit-card-div img {
+        padding-top:30px;
+    }
+    .credit-card-div .small-font {
+        font-size:9px;
+    }
+    .credit-card-div .pad-adjust {
+        padding-top:10px;
+    }
+</style>
+
+<body id="home">
+
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status"></div>
+</div>
+<!-- NavBar-->
+<nav class="navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#home">SupremeBot</a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                {% if not loggined %}
+                    <li class="menuItem"><a href="/index#whatis">What is?</a></li>
+                {% else %}
+                    <li class="menuItem"><a href="/index#address">Add Address</a></li>
+                    <li class="menuItem"><a href="/index#card">Add Card</a></li>
+                    <li class="menuItem"><a href="/index#order">Add Order</a></li>
+                {% endif %}
+                <!--<li class="menuItem"><a href="#useit">Use It</a></li>-->
+                <li class="menuItem"><a href="/contact#contact">Contact</a></li>
+                {% if loggined %}
+                    <li class="menuItem"><a href="{{ url_for('logout') }}">Exit</a></li>
+                {% else %}
+                    <li class="menuItem"><a href="{{ url_for('begin') }}">Sign in</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<div id="contact" class="content-section-b">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6 col-md-offset-3 text-center wrap_title">
+                <h2>Contact Us</h2>
+            </div>
+
+            <form role="form" action="" method="post" >
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="InputName">Your Name</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="InputEmail">Your Email</label>
+                        <div class="input-group">
+                            <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" required  >
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="InputMessage">Message</label>
+                        <div class="input-group">
+                            <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
+                        </div>
+                    </div>
+
+                    <input type="submit" name="submit" id="submit" value="Submit (Comming soon)" class="btn wow tada btn-embossed btn-primary pull-right">
+                </div>
+            </form>
+
+            <hr class="featurette-divider hidden-lg">
+            <div class="col-md-5 col-md-push-1 address">
+                <address>
+                    <h3>Office Location</h3>
+                    <p class="lead"><a href="https://www.google.ru/maps/place/%D1%83%D0%BB.+%D0%9F%D0%B5%D1%80%D0%B2%D0%BE%D0%BC%D0%B0%D0%B9%D1%81%D0%BA%D0%B0%D1%8F,+30%D0%BA7,+%D0%94%D0%BE%D0%BB%D0%B3%D0%BE%D0%BF%D1%80%D1%83%D0%B4%D0%BD%D1%8B%D0%B9,+%D0%9C%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB.,+141701/@55.928905,37.5211223,17z/data=!3m1!4b1!4m5!3m4!1s0x46b5398727040471:0xee00a38da3d2694b!8m2!3d55.928905!4d37.523311">Pervomayskaia 30/7<br>
+                        Dolgoprudny, Moscow region, 141701</a><br>
+                        Phone: 8(926)467-40-11</p>
+                </address>
+
+                <h3>Social</h3>
+                <li class="social">
+                    <a href="#"><i class="fa fa-facebook-square fa-size"> </i></a>
+                    <a href="#"><i class="fa  fa-twitter-square fa-size"> </i> </a>
+                    <a href="#"><i class="fa fa-google-plus-square fa-size"> </i></a>
+                    <a href="#"><i class="fa fa-flickr fa-size"> </i> </a>
+                </li>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="morph-button">
+            <button></button>
+        </div>
+        <div class="col-md-7 morph-button">
+            <h3 class="footer-title">SupremeBot by antosha</h3>
+        </div> <!-- /col-xs-7 -->
+    </div>
+</footer>
+
+<!-- JavaScript -->
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/owl.carousel.js"></script>
+<script src="js/script.js"></script>
+<!-- StikyMenu -->
+<script src="js/stickUp.min.js"></script>
+<script type="text/javascript">
+    jQuery(function($) {
+        $(document).ready( function() {
+            $('.navbar-default').stickUp();
+
+        });
+    });
+
+</script>
+<!-- Smoothscroll -->
+<script type="text/javascript" src="js/jquery.corner.js"></script>
+<script src="js/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+<script src="js/classie.js"></script>
+<script src="js/uiMorphingButton_inflow.js"></script>
+<!-- Magnific Popup core JS file -->
+<script src="js/jquery.magnific-popup.js"></script>
+</body>
+
+</html>

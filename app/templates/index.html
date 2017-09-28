@@ -1,0 +1,480 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+<head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="author" content="">
+
+    <title>SupremeBot</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Google Web Font -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom CSS-->
+    <link href="css/general.css" rel="stylesheet">
+
+    <!-- Owl-Carousel -->
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/owl.theme.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+
+    <!-- Magnific Popup core CSS file -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <script src="js/modernizr-2.8.3.min.js"></script>  <!-- Modernizr /-->
+    <!--[if IE 9]>
+		<script src="js/PIE_IE9.js"></script>
+	<![endif]-->
+    <!--[if lt IE 9]>
+		<script src="js/PIE_IE678.js"></script>
+	<![endif]-->
+
+    <!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+	<![endif]-->
+
+</head>
+<style>
+    .credit-card-div  span {
+        padding-top:10px;
+    }
+    .credit-card-div img {
+        padding-top:30px;
+    }
+    .credit-card-div .small-font {
+        font-size:9px;
+    }
+    .credit-card-div .pad-adjust {
+        padding-top:10px;
+    }
+</style>
+
+<body id="home">
+
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status"></div>
+</div>
+{% if not loggined %}
+    <!-- FullScreen -->
+    <div class="intro-header">
+        <div class="col-xs-12 text-center abcen1">
+            <h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">Supreme<wbr>Bot</h1>
+            <h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">Buy Supreme items in seconds.</h3>
+            <ul class="list-inline intro-social-buttons">
+                <li><a href="#whatis" class="btn  btn-lg mybutton_cyano wow fadeIn" data-wow-delay="0.8s"><span class="network-name">Get started</span></a>
+                </li>
+                <li id="download" ><a href="{{ url_for('begin') }}" class="btn  btn-lg mybutton_standard wow swing wow fadeIn" data-wow-delay="1.2s"><span class="network-name">Sign in with vk</span></a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.container -->
+        <div class="col-xs-12 text-center abcen wow fadeIn">
+            <div class="button_down ">
+                <a class="imgcircle wow bounceInUp" data-wow-duration="1.5s"  href="#whatis"> <img class="img_scroll" src="img/icon/circle.png" alt=""> </a>
+            </div>
+        </div>
+    </div>
+{% endif %}
+<!-- NavBar-->
+<nav class="navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#home">SupremeBot</a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                {% if not loggined %}
+                    <li class="menuItem"><a href="/index#whatis">What is?</a></li>
+                {% else %}
+                    <li class="menuItem"><a href="/index#address">Add Address</a></li>
+                    <li class="menuItem"><a href="/index#card">Add Card</a></li>
+                    <li class="menuItem"><a href="/index#order">Add Order</a></li>
+                {% endif %}
+                <!--<li class="menuItem"><a href="#useit">Use It</a></li>-->
+                <li class="menuItem"><a href="/contact#contact">Contact</a></li>
+                {% if loggined %}
+                    <li class="menuItem"><a href="{{ url_for('logout') }}">Exit</a></li>
+                {% else %}
+                    <li class="menuItem"><a href="{{ url_for('begin') }}">Sign in</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+{% if not loggined %}
+    <!-- What is -->
+    <div id="whatis" class="content-section-b" style="border-top: 0">
+        <div class="container">
+
+            <div class="col-md-6 col-md-offset-3 text-center wrap_title">
+                <h2>What is?</h2>
+                <p class="lead"><br></p>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-4 wow fadeInDown text-center">
+                    <img class="rotate" src="img/icon/vk.png" alt="Generic placeholder image">
+                    <h3>Simple Registration</h3>
+                    <p class="lead"> All you need to do is click 2 buttons. No need to come up with complicated passwords.</p>
+                    <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+                </div><!-- /.col-lg-4 -->
+
+                <div class="col-sm-4 wow fadeInDown text-center">
+                    <img  class="rotate" src="img/icon/search.svg" alt="Generic placeholder image">
+                    <h3>Keyword Search</h3>
+                    <p class="lead">The Keyword Search feature will let you automatically add items with the product’s keyword.</p>
+                </div><!-- /.col-lg-4 -->
+
+                <div class="col-sm-4 wow fadeInDown text-center">
+                    <img  class="rotate" src="img/icon/secure.png" alt="Generic placeholder image">
+                    <h3>Secure Process</h3>
+                    <p class="lead">The SupremeBot is 100% safe to use. All connections are encrypted.</p>
+                    <p class="lead"></p>
+                    <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+                </div><!-- /.col-lg-4 -->
+            </div>
+            <div class="row tworow">
+                <div class="col-sm-4 wow fadeInDown text-center">
+                    <img class="rotate" src="img/icon/clocks.svg" alt="Generic placeholder image">
+                    <h3>Pro Scheduler</h3>
+                    <p class="lead">Schedule the bot to start at a specific time. Very useful for those who cannot be on their computer at the time of the drop. </p>
+                    <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+                </div><!-- /.col-lg-4 -->
+
+                <div class="col-sm-4 wow fadeInDown text-center">
+                    <img  class="rotate" src="img/icon/pencils.svg" alt="Generic placeholder image">
+                    <h3>Always Updated</h3>
+                    <p class="lead">SupremeBot is updated regularly and will always be up-to-date with Supreme’s website. No surprises. </p>
+                </div><!-- /.col-lg-4 -->
+
+                <div class="col-sm-4 wow fadeInDown text-center">
+                    <img  class="rotate" src="img/icon/speed.svg" alt="Generic placeholder image">
+                    <h3>Extremely Fast</h3>
+                    <p class="lead">SupremeBot is really quick. The whole buying process will take less than 3 seconds to complete.</p>
+                    <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+                </div><!-- /.col-lg-4 -->
+            </div>
+            <div class="row" align="center">
+                <a href="/begin" class="btn wow tada btn-embossed btn-lg mybutton_cyano"><span class="network-name"><h4>Sign in with vk</h4></span></a>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div id="whatis" class="content-section-b" style="border-top: 0">
+        <div class="container">
+
+            <div class="col-md-6 col-md-offset-3 text-center wrap_title">
+                <h2>How to use?</h2>
+                <p class="lead">All you need is three simple steps.<br><br></p>
+
+            </div>
+
+            <div class="row">
+                <a href="#address">
+                    <div class="col-sm-4 wow fadeInDown text-center">
+                        <img class="rotate" src="img/icon/map.svg" alt="Generic placeholder image">
+                        <h3>Add delivery address</h3>
+                    </div><!-- /.col-lg-4 -->
+                </a>
+                <a href="#card">
+                    <div class="col-sm-4 wow fadeInDown text-center">
+                        <img  class="rotate" src="img/icon/wallet.png" alt="Generic placeholder image">
+                        <h3>Add payment method</h3>
+                    </div><!-- /.col-lg-4 -->
+                </a>
+                <a href="#order">
+                    <div class="col-sm-4 wow fadeInDown text-center">
+                        <img  class="rotate" src="img/icon/retina.svg" alt="Generic placeholder image">
+                        <h3>Complete your order</h3>
+                        <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+                    </div><!-- /.col-lg-4 -->
+                </a>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if loggined %}
+    <!-- Use it -->
+    <div id ="address" class="content-section-a">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-sm-6 pull-right wow fadeInRightBig">
+                    <img class="img-responsive " src="img/maps.png" alt="">
+                </div>
+
+                <div class="col-sm-6 wow fadeInLeftBig"  data-animation-delay="200">
+                    <h3 class="section-heading">Add Address</h3>
+
+                    {% if error['address'] %}
+                        <div class="alert alert-danger">
+                            {{ error_msg  }}
+                        </div>
+                    {% endif %}
+
+                    <form action="{{ url_for('add_address') }}" method="POST" role="form" class="form-inline">
+                        <label class="" for="country">Country: </label>
+                        <select name="country" class="form-control pull-right">
+                            <option value="RU">RU</option>
+                        </select>
+
+                        <br><br>
+
+                        <label class="pull-left" for="city">City: </label>
+                        <input name="city" type="text" class="form-control pull-right" placeholder="Moscow" required>
+
+                        <br><br>
+
+                        <label class="pull-left" for="address">Address: </label>
+                        <input name="address" type="text" class="form-control pull-right" placeholder="Red Square, 1, 1" required>
+
+                        <br><br>
+
+                        <label class="pull-left" for="vval">Zip: </label>
+                        <input name="zip" type="text" class="form-control pull-right" placeholder="101000" required>
+
+                        <br><br><br>
+                        <div class="row ">
+                            <div class="col-md-4 col-sm-4 col-xs-4 pad-adjust pull-right">
+                                <input type="submit" class="btn btn-primary btn-block" value="Submit" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </div>
+
+    <div id="card" class="content-section-b">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 wow fadeInLeftBig"  data-animation-delay="200">
+                    <img class="img-responsive " src="img/card.png" alt="">
+                </div>
+
+                <div class="col-sm-6 wow fadeInRightBig"  data-animation-delay="200">
+                    <h3 class="section-heading">Add Card</h3>
+                    <div class="row">
+
+                        {% if error['card'] %}
+                            <div class="alert alert-danger">
+                                {{ error_message  }}
+                            </div>
+                        {% endif %}
+
+                        <form action="{{ url_for('add_card') }}" method="POST" role="form">
+                            <div class="credit-card-div">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <h5 class="text-muted"> Credit Card Number</h5>
+                                            </div>
+                                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                                <input name="cnb1" type="text" class="form-control" placeholder="0000" required />
+                                            </div>
+                                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                                <input name="cnb2" type="text" class="form-control" placeholder="0000" required />
+                                            </div>
+                                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                                <input name="cnb3" type="text" class="form-control" placeholder="0000" required />
+                                            </div>
+                                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                                <input name="cnb4" type="text" class="form-control" placeholder="0000" required />
+                                            </div>
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                                <span class="help-block text-muted small-font"> Expiry Month</span>
+                                                <input name="month" type="text" class="form-control" placeholder="MM" required />
+                                            </div>
+                                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                                <span class="help-block text-muted small-font">  Expiry Year</span>
+                                                <input name="year" type="text" class="form-control" placeholder="YY" required />
+                                            </div>
+                                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                                <span class="help-block text-muted small-font">  CCV</span>
+                                                <input name="vval" type="text" class="form-control" placeholder="CCV" required />
+                                            </div>
+                                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                                <img src="data:image/png;base64,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" class="img-rounded" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                                <span class="help-block text-muted small-font">  Type</span>
+                                                <select name="type" class="form-control pull-right">
+                                                    <option value="master">master</option>
+                                                    <option value="visa">visa</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust pull-right">
+                                                <input type="submit" class="btn btn-primary btn-block" value="Submit" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- CREDIT CARD DIV END -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="order" class="content-section-a">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-sm-6 pull-right wow fadeInRightBig">
+                    <img class="img-responsive " src="img/bag.png" alt="">
+                </div>
+
+                <div class="col-sm-6 wow fadeInLeftBig"  data-animation-delay="200">
+                    <h3 class="section-heading">Add Order</h3>
+
+                    {% if error['order'] %}
+                        <div class="alert alert-danger">
+                            {{ error_message  }}
+                        </div>
+                    {% endif %}
+
+
+                    <form action="{{ url_for('add_order') }}" method="POST" role="form" class="form-inline">
+
+                        <label class="pull-left" for="cnb">Full Name: </label>
+                        <input name="name" type="text" class="form-control pull-right" placeholder="{{ user.name }}" required>
+
+                        <br><br>
+
+                        <label class="pull-left" for="cnb"> Email: </label>
+                        <input name="email" type="text" class="form-control pull-right" placeholder="mail@mail.com" required>
+
+                        <br><br>
+
+                        <label class="pull-left" for="type">Card: </label>
+                        <select name="card" class="form-control pull-right">
+                            {% for card in cards %}
+                                <option value="{{ card }}">{{ card }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <br><br>
+
+                        <label class="pull-left" for="type">Address: </label>
+                        <select name="adr" class="form-control pull-right">
+                            {% for address in adrs %}
+                                <option value="{{ address }}">{{ address }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <br><br>
+
+                        <label class="pull-left" for="cnb">Item name: </label>
+                        <input name="clothes_name" type="text" class="form-control pull-right" placeholder="Digi Coaches Jacket" required>
+
+                        <br><br>
+
+                        <label class="pull-left" for="vval">Colors: </label>
+                        <input name="clothes_colors" type="text" class="form-control pull-right" placeholder="Black White Navy" required>
+
+                        <br><br>
+
+                        <label class="pull-left" for="size">Size: </label>
+                        <input name="size" type="text" class="form-control pull-right" placeholder="XLarge" required>
+
+                        <br><br>
+
+                        <label class="pull-left" for="tel">Tel: </label>
+                        <input name="tel" type="text" class="form-control pull-right" placeholder="89165999999" required>
+
+                        <br><br><br>
+
+                        <div class="row ">
+                            <div class="col-md-4 col-sm-4 col-xs-4 pad-adjust pull-right">
+                                <input type="submit" class="btn btn-primary btn-block" value="Submit" />
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </div>
+{% endif %}
+
+<footer>
+    <div class="container">
+        <div class="morph-button">
+            <button></button>
+        </div>
+        <div class="col-md-7 morph-button">
+            <h3 class="footer-title">SupremeBot by antosha</h3>
+        </div> <!-- /col-xs-7 -->
+    </div>
+</footer>
+
+<!-- JavaScript -->
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/owl.carousel.js"></script>
+<script src="js/script.js"></script>
+<!-- StikyMenu -->
+<script src="js/stickUp.min.js"></script>
+<script type="text/javascript">
+    jQuery(function($) {
+        $(document).ready( function() {
+            $('.navbar-default').stickUp();
+
+        });
+    });
+
+</script>
+<!-- Smoothscroll -->
+<script type="text/javascript" src="js/jquery.corner.js"></script>
+<script src="js/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+<script src="js/classie.js"></script>
+<script src="js/uiMorphingButton_inflow.js"></script>
+<!-- Magnific Popup core JS file -->
+<script src="js/jquery.magnific-popup.js"></script>
+</body>
+
+</html>
